@@ -1,0 +1,13 @@
+eureka:
+  client:
+    # 声明是否将自己到信息注册到eureka服务器
+    register-with-eureka: false
+    # 是否到eureka抓取注册信息
+    fetch-registry: false
+    service-url:
+      defaultZone: @eureka.address@
+spring:
+  application:
+    name: @project.artifactId@
+  profiles:
+    active: @profiles.activation@
