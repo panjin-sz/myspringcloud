@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: @project.artifactId@
+  profiles:
+    active: @profiles.activation@
+  cloud:
+    config:
+      name: @project.artifactId@
+      profile: @profiles.activation@
+      uri: http://localhost:8766/
+      label: master
+
+eureka:
+  instance:
+    hostname: localhost
+    prefer-ip-address: true
+  client:
+    service-url:
+      defaultZone: @eureka.address@
