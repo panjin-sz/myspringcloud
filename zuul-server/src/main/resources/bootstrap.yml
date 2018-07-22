@@ -3,12 +3,6 @@ spring:
     name: @project.artifactId@
   profiles:
     active: @profiles.activation@
-  cloud:
-    config:
-      name: @project.artifactId@
-      profile: @profiles.activation@
-      uri: http://localhost:8766/
-      label: master
 
 eureka:
   client:

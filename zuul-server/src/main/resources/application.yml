@@ -1,0 +1,14 @@
+info:
+  component: Zuul Server
+
+zuul:
+  routes:
+    customer:
+      path: /customer/**
+      serviceId: ihome-customer
+    zuulserver:
+      path: /self/**
+      serviceId: zuul-server
+
+server:
+  port: 8768
