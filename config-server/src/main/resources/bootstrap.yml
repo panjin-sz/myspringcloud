@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: @project.artifactId@
+  profiles:
+    active: @profiles.activation@
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/panjin-sz/spring-cloud-config
+          search-paths: /*
+      label: master
+
+eureka:
+  instance:
+    hostname: localhost
+    prefer-ip-address: true
+  client:
+    service-url:
+      defaultZone: @eureka.address@
