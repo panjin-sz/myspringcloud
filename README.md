@@ -13,3 +13,7 @@ springcloud版本：Finchley.RELEASE<br>
 1、maven项目无法识别<br>
 解决办法：我使用的是intellij idea，pom文件无maven图标标记，在idea右侧的Maven Projects点击"+"图标，将项目的pom文件加入即可。可参考文章<https://blog.csdn.net/Sunny1994_/article/details/79078768><br>
 2、
+
+优秀开源项目引入<br>
+1、mybatis-generator-gui<br>
+项目地址：https://github.com/zouzg/mybatis-generator-gui<br>
