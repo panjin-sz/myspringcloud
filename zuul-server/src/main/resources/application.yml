@@ -9,6 +9,9 @@ zuul:
     zuulserver:
       path: /self/**
       serviceId: zuul-server
+    merchant:
+      path: /merchant/**
+      serviceId: ihome-merchant
 
 server:
   port: 8768
