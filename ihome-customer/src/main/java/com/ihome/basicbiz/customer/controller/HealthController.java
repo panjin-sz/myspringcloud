@@ -1,4 +1,4 @@
-package com.ihome.basicbiz.web;
+package com.ihome.basicbiz.customer.controller;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
