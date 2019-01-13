@@ -1,2 +1,12 @@
 server:
   port: 8767
+spring:
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/myexample?useUnicode=true&characterEncoding=utf8&useSSL=false
+    username: root
+    password: panjin2017
+    driver-class-name: com.mysql.jdbc.Driver
+
+mybatis:
+  type-aliases-package: com.ihome.basicbiz.customer.domain
+  mapper-locations: classpath:mapper/*.xml

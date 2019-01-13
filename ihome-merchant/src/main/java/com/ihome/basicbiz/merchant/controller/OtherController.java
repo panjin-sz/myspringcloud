@@ -7,20 +7,21 @@ import org.springframework.web.bind.annotation.RestController;
 
 /**
  * @author panjin.
- * @date 2018/8/5.
+ * @date 2018/8/27.
  */
 @RestController
 @Slf4j
-public class HealthController {
+public class OtherController {
 
     @Value("${from}")
     private String from;
 
-    @GetMapping(value = "/health")
+    @GetMapping(value = "/other")
     public String health() {
-        log.info("--------------------info health-------------------");
+        log.info("--------------------info other-------------------");
 
+        from += "9";
         log.info("from is {}", from);
-        return "hello, merchant!";
+        return "hello, other merchant!";
     }
 }

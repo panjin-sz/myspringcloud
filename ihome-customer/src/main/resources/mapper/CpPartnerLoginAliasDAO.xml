@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ihome.basicbiz.customer.mapper.CpPartnerLoginAliasDAO">
+  <resultMap id="BaseResultMap" type="com.ihome.basicbiz.customer.domain.CpPartnerLoginAlias">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="alias_source_no" jdbcType="VARCHAR" property="aliasSourceNo" />
+    <result column="customer_id" jdbcType="BIGINT" property="customerId" />
+    <result column="out_customer_id" jdbcType="VARCHAR" property="outCustomerId" />
+    <result column="source_no" jdbcType="VARCHAR" property="sourceNo" />
+    <result column="source_name" jdbcType="VARCHAR" property="sourceName" />
+    <result column="created_time" jdbcType="TIMESTAMP" property="createdTime" />
+    <result column="modified_time" jdbcType="TIMESTAMP" property="modifiedTime" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, alias_source_no, customer_id, out_customer_id, source_no, source_name, created_time, 
+    modified_time
+  </sql>
+  <select id="selectByExample" parameterType="com.ihome.basicbiz.customer.domain.CpPartnerLoginAliasExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from cp_partner_login_alias
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+    <if test="limit != null">
+      <if test="offset != null">
+        limit ${offset}, ${limit}
+      </if>
+      <if test="offset == null">
+        limit ${limit}
+      </if>
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from cp_partner_login_alias
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from cp_partner_login_alias
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.ihome.basicbiz.customer.domain.CpPartnerLoginAliasExample">
+    delete from cp_partner_login_alias
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.ihome.basicbiz.customer.domain.CpPartnerLoginAlias">
+    insert into cp_partner_login_alias (id, alias_source_no, customer_id, 
+      out_customer_id, source_no, source_name, 
+      created_time, modified_time)
+    values (#{id,jdbcType=BIGINT}, #{aliasSourceNo,jdbcType=VARCHAR}, #{customerId,jdbcType=BIGINT}, 
+      #{outCustomerId,jdbcType=VARCHAR}, #{sourceNo,jdbcType=VARCHAR}, #{sourceName,jdbcType=VARCHAR}, 
+      #{createdTime,jdbcType=TIMESTAMP}, #{modifiedTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ihome.basicbiz.customer.domain.CpPartnerLoginAlias">
+    insert into cp_partner_login_alias
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="aliasSourceNo != null">
+        alias_source_no,
+      </if>
+      <if test="customerId != null">
+        customer_id,
+      </if>
+      <if test="outCustomerId != null">
+        out_customer_id,
+      </if>
+      <if test="sourceNo != null">
+        source_no,
+      </if>
+      <if test="sourceName != null">
+        source_name,
+      </if>
+      <if test="createdTime != null">
+        created_time,
+      </if>
+      <if test="modifiedTime != null">
+        modified_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="aliasSourceNo != null">
+        #{aliasSourceNo,jdbcType=VARCHAR},
+      </if>
+      <if test="customerId != null">
+        #{customerId,jdbcType=BIGINT},
+      </if>
+      <if test="outCustomerId != null">
+        #{outCustomerId,jdbcType=VARCHAR},
+      </if>
+      <if test="sourceNo != null">
+        #{sourceNo,jdbcType=VARCHAR},
+      </if>
+      <if test="sourceName != null">
+        #{sourceName,jdbcType=VARCHAR},
+      </if>
+      <if test="createdTime != null">
+        #{createdTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifiedTime != null">
+        #{modifiedTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.ihome.basicbiz.customer.domain.CpPartnerLoginAliasExample" resultType="java.lang.Long">
+    select count(*) from cp_partner_login_alias
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update cp_partner_login_alias
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=BIGINT},
+      </if>
+      <if test="record.aliasSourceNo != null">
+        alias_source_no = #{record.aliasSourceNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.customerId != null">
+        customer_id = #{record.customerId,jdbcType=BIGINT},
+      </if>
+      <if test="record.outCustomerId != null">
+        out_customer_id = #{record.outCustomerId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sourceNo != null">
+        source_no = #{record.sourceNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sourceName != null">
+        source_name = #{record.sourceName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createdTime != null">
+        created_time = #{record.createdTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.modifiedTime != null">
+        modified_time = #{record.modifiedTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update cp_partner_login_alias
+    set id = #{record.id,jdbcType=BIGINT},
+      alias_source_no = #{record.aliasSourceNo,jdbcType=VARCHAR},
+      customer_id = #{record.customerId,jdbcType=BIGINT},
+      out_customer_id = #{record.outCustomerId,jdbcType=VARCHAR},
+      source_no = #{record.sourceNo,jdbcType=VARCHAR},
+      source_name = #{record.sourceName,jdbcType=VARCHAR},
+      created_time = #{record.createdTime,jdbcType=TIMESTAMP},
+      modified_time = #{record.modifiedTime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ihome.basicbiz.customer.domain.CpPartnerLoginAlias">
+    update cp_partner_login_alias
+    <set>
+      <if test="aliasSourceNo != null">
+        alias_source_no = #{aliasSourceNo,jdbcType=VARCHAR},
+      </if>
+      <if test="customerId != null">
+        customer_id = #{customerId,jdbcType=BIGINT},
+      </if>
+      <if test="outCustomerId != null">
+        out_customer_id = #{outCustomerId,jdbcType=VARCHAR},
+      </if>
+      <if test="sourceNo != null">
+        source_no = #{sourceNo,jdbcType=VARCHAR},
+      </if>
+      <if test="sourceName != null">
+        source_name = #{sourceName,jdbcType=VARCHAR},
+      </if>
+      <if test="createdTime != null">
+        created_time = #{createdTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifiedTime != null">
+        modified_time = #{modifiedTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ihome.basicbiz.customer.domain.CpPartnerLoginAlias">
+    update cp_partner_login_alias
+    set alias_source_no = #{aliasSourceNo,jdbcType=VARCHAR},
+      customer_id = #{customerId,jdbcType=BIGINT},
+      out_customer_id = #{outCustomerId,jdbcType=VARCHAR},
+      source_no = #{sourceNo,jdbcType=VARCHAR},
+      source_name = #{sourceName,jdbcType=VARCHAR},
+      created_time = #{createdTime,jdbcType=TIMESTAMP},
+      modified_time = #{modifiedTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>
